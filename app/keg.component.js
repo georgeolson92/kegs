@@ -24,11 +24,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 KegComponent.prototype.tapKeg = function () {
                     this.keg.tap();
                 };
+                KegComponent.prototype.pourPint = function () {
+                    this.keg.pints--;
+                };
                 KegComponent = __decorate([
                     core_1.Component({
                         selector: 'keg-display',
                         inputs: ['keg'],
-                        template: "\n  <div>\n    <h2>{{ keg.name }}</h2>\n      <h2>{{ keg.brand }}</h2>\n      <h2>Price: &#36;{{ keg.price }}</h2>\n      <h2>ABV: {{ keg.alcohol }}&#37;</h2>\n    <button (click)=\"tapKeg()\">Tap It!</button>\n  </div>\n  "
+                        template: "\n  <div [class.low]=\"keg.pints < 10\">\n    <h2>{{ keg.name }}</h2>\n      <h4>{{ keg.brand }}</h4>\n      <h4>Price: &#36;{{ keg.price }}</h4>\n      <h4>ABV: {{ keg.alcohol }}&#37;</h4>\n      <h4>Pints Left: {{ keg.pints }}</h4>\n    <button (click)=\"tapKeg()\">Tap It!</button>\n    <button (click)=\"pourPint()\">Pour pint</button>\n  </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KegComponent);

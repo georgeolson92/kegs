@@ -19,6 +19,7 @@ export class AppComponent {
       var newKeg2 = new Keg("Pale Ale", "Deschutes", 8, 6);
       var newKeg3 = new Keg("Pilsner", "Bear Republic", 9, 5);
       newKeg3.tap();
+      newKeg.pints = 12;
       this.kegs = [newKeg, newKeg2, newKeg3];
   }
 }

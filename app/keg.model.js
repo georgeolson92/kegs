@@ -12,6 +12,7 @@ System.register([], function(exports_1, context_1) {
                     this.price = price;
                     this.alcohol = alcohol;
                     this.tapped = false;
+                    this.pints = 124;
                 }
                 Keg.prototype.tap = function () {
                     this.tapped = true;
