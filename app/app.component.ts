@@ -1,11 +1,12 @@
 import { Component } from 'angular2/core';
 import { Keg } from './keg.model';
 import { KegListComponent } from './keg-list.component';
+import { NewKegComponent } from './new-keg.component';
 
 
 @Component({
   selector: 'my-app',
-  directives: [KegListComponent],
+  directives: [KegListComponent, NewKegComponent],
   template: `
   <keg-list [kegList]="kegs"></keg-list>
   `

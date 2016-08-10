@@ -1,4 +1,4 @@
-System.register(['angular2/core', './keg.component', './tapped.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', './keg.component', './tapped.pipe', './new-keg.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './keg.component', './tapped.pipe'], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, keg_component_1, tapped_pipe_1;
+    var core_1, keg_component_1, tapped_pipe_1, new_keg_component_1;
     var KegListComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './keg.component', './tapped.pipe'], function(
             },
             function (tapped_pipe_1_1) {
                 tapped_pipe_1 = tapped_pipe_1_1;
+            },
+            function (new_keg_component_1_1) {
+                new_keg_component_1 = new_keg_component_1_1;
             }],
         execute: function() {
             KegListComponent = (function () {
@@ -29,13 +32,16 @@ System.register(['angular2/core', './keg.component', './tapped.pipe'], function(
                     this.filterUntapped = false;
                     this.filterTapped = true;
                 }
+                KegListComponent.prototype.addKeg = function (keg) {
+                    this.kegList.push(keg);
+                };
                 KegListComponent = __decorate([
                     core_1.Component({
                         selector: 'keg-list',
                         inputs: ['kegList'],
-                        directives: [keg_component_1.KegComponent],
+                        directives: [keg_component_1.KegComponent, new_keg_component_1.NewKegComponent],
                         pipes: [tapped_pipe_1.TappedPipe],
-                        template: "\n  <h1>Current Tap List</h1>\n    <keg-display *ngFor=\"#currentKeg of kegList | tapped:filterTapped\" [keg]=\"currentKeg\">\n    </keg-display>\n  <h1>Untapped Beer</h1>\n    <keg-display *ngFor=\"#currentKeg of kegList | tapped:filterUntapped\" [keg]=\"currentKeg\">\n    </keg-display>\n  "
+                        template: "\n  <h1>Current Tap List</h1>\n    <keg-display *ngFor=\"#currentKeg of kegList | tapped:filterTapped\" [keg]=\"currentKeg\">\n    </keg-display>\n  <h1>Untapped Beer</h1>\n    <keg-display *ngFor=\"#currentKeg of kegList | tapped:filterUntapped\" [keg]=\"currentKeg\">\n    </keg-display>\n    <new-keg  (onSubmitNewKeg)=\"addKeg($event)\"></new-keg>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KegListComponent);

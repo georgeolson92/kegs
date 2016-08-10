@@ -1,4 +1,4 @@
-System.register(['angular2/core', './keg.model', './keg-list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './keg.model', './keg-list.component', './new-keg.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './keg.model', './keg-list.component'], functi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, keg_model_1, keg_list_component_1;
+    var core_1, keg_model_1, keg_list_component_1, new_keg_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './keg.model', './keg-list.component'], functi
             },
             function (keg_list_component_1_1) {
                 keg_list_component_1 = keg_list_component_1_1;
+            },
+            function (new_keg_component_1_1) {
+                new_keg_component_1 = new_keg_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -35,7 +38,7 @@ System.register(['angular2/core', './keg.model', './keg-list.component'], functi
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        directives: [keg_list_component_1.KegListComponent],
+                        directives: [keg_list_component_1.KegListComponent, new_keg_component_1.NewKegComponent],
                         template: "\n  <keg-list [kegList]=\"kegs\"></keg-list>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
