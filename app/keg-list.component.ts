@@ -18,6 +18,7 @@ import { NewKegComponent } from './new-keg.component';
     <keg-display *ngFor="#currentKeg of kegList | tapped:filterUntapped" [keg]="currentKeg">
     </keg-display>
     <new-keg  (onSubmitNewKeg)="addKeg($event)"></new-keg>
+    <edit-keg *ngIf="selectedTask" [task]="selectedTask"></edit-keg>
   `
 })
 

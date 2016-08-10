@@ -41,7 +41,7 @@ System.register(['angular2/core', './keg.component', './tapped.pipe', './new-keg
                         inputs: ['kegList'],
                         directives: [keg_component_1.KegComponent, new_keg_component_1.NewKegComponent],
                         pipes: [tapped_pipe_1.TappedPipe],
-                        template: "\n  <h1>Current Tap List</h1>\n    <keg-display *ngFor=\"#currentKeg of kegList | tapped:filterTapped\" [keg]=\"currentKeg\">\n    </keg-display>\n  <h1>Untapped Beer</h1>\n    <keg-display *ngFor=\"#currentKeg of kegList | tapped:filterUntapped\" [keg]=\"currentKeg\">\n    </keg-display>\n    <new-keg  (onSubmitNewKeg)=\"addKeg($event)\"></new-keg>\n  "
+                        template: "\n  <h1>Current Tap List</h1>\n    <keg-display *ngFor=\"#currentKeg of kegList | tapped:filterTapped\" [keg]=\"currentKeg\">\n    </keg-display>\n  <h1>Untapped Beer</h1>\n    <keg-display *ngFor=\"#currentKeg of kegList | tapped:filterUntapped\" [keg]=\"currentKeg\">\n    </keg-display>\n    <new-keg  (onSubmitNewKeg)=\"addKeg($event)\"></new-keg>\n    <edit-keg *ngIf=\"selectedTask\" [task]=\"selectedTask\"></edit-keg>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KegListComponent);

@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './edit-keg.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,16 +10,20 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, edit_keg_component_1;
     var KegComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (edit_keg_component_1_1) {
+                edit_keg_component_1 = edit_keg_component_1_1;
             }],
         execute: function() {
             KegComponent = (function () {
                 function KegComponent() {
+                    this.beingEdited = false;
                 }
                 KegComponent.prototype.tapKeg = function () {
                     this.keg.tap();
@@ -27,11 +31,15 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 KegComponent.prototype.pourPint = function () {
                     this.keg.pints--;
                 };
+                KegComponent.prototype.editKeg = function () {
+                    this.beingEdited = (!this.beingEdited);
+                };
                 KegComponent = __decorate([
                     core_1.Component({
                         selector: 'keg-display',
                         inputs: ['keg'],
-                        template: "\n  <div [class.low]=\"keg.pints < 10\">\n    <h2>{{ keg.name }}</h2>\n      <h4>{{ keg.brand }}</h4>\n      <h4>Price: &#36;{{ keg.price }}</h4>\n      <h4>ABV: {{ keg.alcohol }}&#37;</h4>\n      <h4>Pints Left: {{ keg.pints }}</h4>\n    <button (click)=\"tapKeg()\">Tap It!</button>\n    <button (click)=\"pourPint()\">Pour pint</button>\n  </div>\n  "
+                        directives: [edit_keg_component_1.EditKegComponent],
+                        template: "\n  <div [class.low]=\"keg.pints < 10\">\n    <h2>{{ keg.name }}</h2>\n      <h4>{{ keg.brand }}</h4>\n      <h4>Price: &#36;{{ keg.price }}</h4>\n      <h4>ABV: {{ keg.alcohol }}&#37;</h4>\n      <h4>Pints Left: {{ keg.pints }}</h4>\n    <button (click)=\"editKeg()\">Edit</button>\n    <edit-keg *ngIf=\"beingEdited\" [keg]=\"keg\"></edit-keg>\n    <button (click)=\"tapKeg()\">Tap It!</button>\n    <button (click)=\"pourPint()\">Pour pint</button>\n  </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KegComponent);
